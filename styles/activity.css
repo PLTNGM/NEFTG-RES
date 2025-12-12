@@ -1,0 +1,626 @@
+/* Unbounded */
+@font-face {
+    font-family: "Unbounded";
+    src: url('fonts/Unbounded-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---шрифты */
+
+body {margin-top: 200px;
+    transition: margin-top 0.3s ease;
+    background:#1E1E1E;
+    box-sizing: border-box;}
+
+body.small-header {
+    margin-top: 120px;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    body {
+        margin-top: 100px !important;
+    }
+
+       body.small-header {
+        margin-top: 80px !important;
+    } 
+    html, body {
+        overflow-x: hidden; /* Запрещаем горизонтальный скролл */
+        width: 100%; /* Фиксируем ширину */
+        max-width: 100%; /* Ограничиваем максимальную ширину */
+    }
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {margin: 0;
+padding: 0;
+box-sizing: border-box;}
+
+/* header */
+header {
+    background: linear-gradient(90deg, #191717, #302A2A);
+    border-bottom-style: solid;
+    border-color: #B82C2C;
+    border-width: 3px;
+    width: 100%;
+    max-width: 1920px;
+    height: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 30px 0 #000000aa;
+}
+
+header.small {
+    height: 120px !important; 
+}
+
+@media (max-width: 768px) {
+    header {height: 120px;
+    width: 100%;
+    }
+    
+    header.small {
+    height: 80px !important; }
+}
+
+/* logo */
+#logo {margin:0 0 1.8% 5%;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    transition: all 0.2s ease;
+}
+
+#logo:hover {font-size: +115%;}
+
+#logo a {text-decoration: none;}
+
+#logo h1 {color: #B82C2C;
+font-family: "Archivo Black", sans-serif;
+font-size: 400%;
+font-weight: 800;
+transition: all 0.3s ease;
+}
+
+
+header.small #logo h1 {color: #B82C2C;
+font-family: "Archivo Black", sans-serif;
+font-size: 230% !important;
+font-weight: 800;
+margin-top: 7%;}
+
+#logo p {color:#CAC7C7;
+font-family: 'unbounded', sans-serif;
+font-size: 145%;
+margin-top: -5%;
+margin-left: 0.8%;
+transition: all 0.3s ease;
+}
+
+
+header.small #logo p {
+    font-size: 85% !important;
+    margin-top: -2% !important;
+    margin-left: 0.5% !important;
+}
+
+@media (max-width: 768px) {
+    #logo {
+    width: 150px;
+    }   
+
+#logo:hover {font-size: +50%;}
+
+#logo a {text-decoration: none;}
+
+#logo h1 {
+font-size: 230%;
+font-weight: 900;
+}
+
+
+header.small #logo h1 {
+font-size: 190% !important;
+font-weight: 900;
+margin-bottom: -4%;}
+
+#logo p {
+font-size: 83%;}
+
+header.small #logo p {
+    font-size: 65% !important;
+}
+}
+
+/* nav */
+/* desktop */
+#navig {margin: 0px 14% 0px 0px;
+display: flex;
+flex-direction: row;
+gap: 25%;
+}
+#navig a {text-decoration: none;
+color: #B82C2C;
+font-family: 'unbounded', sans-serif;
+font-size: 180%;
+transition: all 0.3s ease;
+}
+
+header.small #navig a {
+    font-size: 140%;
+}
+
+header.small #navig a:hover, #navig a:hover {color:#ffffff}
+
+/* мобилка */
+/* Скрываем чекбокс */
+.burger-checkbox {
+    display: none;
+}
+
+/* Текущие стили бургера оставляем */
+.burger {
+    margin-top: 0.5%;
+    margin-right: 5%;
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Делаем кнопку бургера кликабельной */
+.burger-btn {
+    cursor: pointer;
+    display: block;
+}
+
+.burger ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    position: absolute;
+    right: 100%;
+    top: 100%; /* Добавляем, чтобы меню появлялось под кнопкой */
+    padding: 20px 50px;
+    background: linear-gradient(90deg, #4C4646, #383838);
+    border-radius: 25px 0 25px 25px;
+    border: solid 1px #B82C2C;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease; /* Плавное появление */
+    z-index: 1000; /* Чтобы было поверх других элементов */
+}
+
+/* Меняем :active на :checked */
+.burger-checkbox:checked ~ .burger ul,
+.burger-checkbox:checked + .burger ul {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Остальные стили оставляем */
+.burger ul li a {
+    text-decoration: none;
+    font-family: "unbounded", sans-serif;
+    color: #dcdcdc;
+    font-size: 120%;
+    font-weight: 900;
+}
+
+.burger ul li a:hover {color: #B82C2C;}
+
+.line {
+    border: none;
+    border-radius: 500px;
+    height: 1px;
+    width: 220px;
+    margin: 0 auto;
+    background-color: #ffffffc8;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    #navig {display: none;}
+
+    .burger {opacity: 1;
+    visibility:visible;}
+}
+        
+/* ------------header */
+
+/* вставка с фото */
+.nft {display: flex;
+    position: relative;
+    height: 1098px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    z-index: -1;}
+
+@media (max-width: 768px) {
+    .nft {height: 285px;}
+}
+/* ----вставка с фото */
+
+/* основной контент */
+.content-box {background: linear-gradient(90deg, #191717, #302A2A);
+    border-top-style: solid;
+    border-color: #B82C2C;
+    border-width: 3px;
+    width: 100%;
+    max-width: 1920px;
+    height: 1900px;
+    box-shadow: 0px -30px 30px 0px rgba(0, 0, 0, 0.649);}
+
+    @media (max-width: 768px) {.content-box {height: 600px;}
+}
+
+/* контент */
+    /* Заголовок */
+    #mems {display: flex;
+    justify-content: center;}
+
+    /* доп инфа */
+
+.info-checkbox {
+    display: none; /* Чекбокс скрыт */
+}
+
+.info {
+    position: relative;
+    margin-left: 1840px;
+    margin-top: 30px;
+}
+
+.info label img {
+    width: 50px;
+    transition: transform 0.3s ease;
+}
+
+.info-btn {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+.info-btn:hover img {
+    transform: scale(1.1);
+}
+
+.info-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    position: absolute;
+    right: 35%; /* Изменено с 100% на 0 */
+    top: calc(100% + 10px); /* Отступ от кнопки */
+    background: linear-gradient(90deg, #4C4646, #383838);
+    border-radius: 25px;
+    border: solid 1px #B82C2C;
+    padding: 20px;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 800;
+    min-width: 350px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#red {color: #B82C2C;
+font-size: 130%;}
+
+/* Показываем при нажатии на чекбокс */
+.info-checkbox:checked ~ .info-dropdown,
+.info-checkbox:checked + .info-btn + .info-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.info-dropdown li {
+    font-family: "unbounded", sans-serif;
+    color: #dcdcdc;
+    font-size: 120%;
+    font-weight: 900;
+    padding: 5px 0;
+}
+
+.info-dropdown li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .info {
+    margin-left: 90%;
+    margin-top: 10px;
+    }
+
+    .info label img {
+        width: 25px;
+    }
+}
+/* ---доп инф */
+
+    #mems p {font-family: 'unbounded', sans-serif;
+    font-size: 1000%;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2%;}
+
+    .lineZag {border: none;
+        border-radius: 100px;
+        height: 2px;
+        width: 779px;
+        margin: 0 auto;
+        margin-top: 2%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        }
+
+    @media (max-width: 768px) {
+        #mems p {font-size: 270%;
+        margin-top: -5%;}
+        .lineZag {width: 230px;}
+    }
+    
+    /* лидеры */
+
+    .liders {display: flex;
+    flex-direction: row;
+    gap: 7%;
+    justify-content: center;
+    margin-top: 5%}
+    @media (max-width: 768px) {
+        .liders {gap: 2%;}
+    }
+
+    #first {display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;}
+
+    #first img {width: 550px;}
+
+    #first p {text-align: center;
+    margin-top: 3%;
+    font-size: 200%;
+    font-family: "unbounded", sans-serif;
+    font-weight: 700;
+    color: #ffffff;}
+
+    #first h4 {text-align: center;
+    margin-top: 7%;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 300%;
+    color: #F0F970;
+    -webkit-text-stroke: 2px #B82C2C; /* Для WebKit браузеров */
+    paint-order: stroke fill; /* Чтобы обводка была под заливкой */
+    }
+    @media (max-width: 768px) {
+        #first img {width: 120px;}
+        #first p {font-size: 100%;}
+        #first h4 {font-size: 150%;}
+    }
+
+
+    #second {display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    bottom: -210px;}
+
+    #second img {width: 500px;}
+
+    #second p {text-align: center;
+    margin-top: 3%;
+    font-size: 200%;
+    font-family: "unbounded", sans-serif;
+    font-weight: 700;
+    color: #ffffff;}
+
+    #second h4 {text-align: center;
+    margin-top: 7%;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 300%;
+    color: #E3E3E3;
+    -webkit-text-stroke: 2px #B82C2C; /* Для WebKit браузеров */
+    paint-order: stroke fill; /* Чтобы обводка была под заливкой */
+    }
+    @media (max-width: 768px) {
+        #second {bottom: -50px;}
+        #second img {width: 120px;}
+        #second p {font-size: 100%;}
+        #second h4 {font-size: 150%;}
+    }
+
+    #third {display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    bottom: -210px;}
+
+    #third img {width: 500px;}
+
+    #third p {text-align: center;
+    margin-top: 3%;
+    font-size: 200%;
+    font-family: "unbounded", sans-serif;
+    font-weight: 700;
+    color: #ffffff;}
+
+    #third h4 {text-align: center;
+    margin-top: 7%;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 300%;
+    color: #F6C76F;
+    -webkit-text-stroke: 2px #B82C2C; /* Для WebKit браузеров */
+    paint-order: stroke fill; /* Чтобы обводка была под заливкой */
+    }
+    @media (max-width: 768px) {
+        #third {bottom: -50px;}
+        #third img {width: 120px;}
+        #third p {font-size: 100%;}
+        #third h4 {font-size: 150%;}
+    }
+
+
+    .content-box h3 {display: flex;
+    justify-content: center;
+    margin-top: 4%;
+    font-family: 'unbounded', sans-serif;
+    font-size: 450%;
+    font-weight: 800;
+    color: #ffffff;}
+
+    .content-box .linelid {border: none;
+        border-radius: 100px;
+        height: 2px;
+        width: 779px;
+        margin: 0 auto;
+        margin-top: 1%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;}
+
+    @media (max-width: 768px) {
+        .content-box h3 {font-size: 150%;}
+        .content-box .linelid {width: 200px;}
+    }
+
+/* предложка */
+        /* треугольнички */
+        #Polygon {display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 5%;
+        }
+
+        #Polygon img {width: 60px;}
+
+        #predloz-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 2%;
+        }
+
+        #predloz {
+        line-height: 1;
+        font-family: 'unbounded', sans-serif;
+        font-size: 400%;
+        font-weight: 900;
+        width: 700px;
+        text-align: center;
+        color: #ffffff;}
+
+        #redp {color: #B82C2C;}
+
+        @media (max-width: 768px) {
+            #Polygon img {width: 30px;}
+            #predloz {font-size: 200%;
+            width: 320px;}
+        }
+
+/* ----окно контента */
+
+/* подвал */
+footer {background: #1E1E1E;
+    border-top-style: solid;
+    border-color: #B82C2C;
+    border-width: 3px;
+    width: 100%;
+    max-width: 1920px;
+    height: 200px;
+    margin-top: -3%;}
+
+footer #thx {color: #B82C2C;
+text-align: center;
+margin-top: 1%;
+font-size: 200%;
+font-family: 'unbounded', sans-serif;
+font-weight: 100;}
+
+footer #gr {display: flex;
+            justify-content: space-between;
+            margin-top: 2%;
+            color: #AF9E9E;
+            font-family: 'unbounded', sans-serif;
+            font-size: 150%;
+            padding: 0 1%;}
+
+footer #gr #p1 {width: 290px;}
+
+footer #gr #p2 {width: 420px;
+            text-align: right;
+            text-indent: 34%;}
+
+#socials {display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -2%;}
+
+#socials a img {width: 70%;}
+
+footer h3 {display: flex;
+        justify-content: center;
+        margin-top: 1%;
+        color: #564E4E;
+        font-family: 'unbounded', sans-serif;
+        font-size: 120%;}
+
+@media (max-width: 768px) {
+    footer {height: auto;
+        margin-top: -13%;
+        padding: 20px 0;}
+
+    footer #thx {font-size: 100%; margin-top: 2%;}
+    footer #gr #p1 {width: 175px;
+    font-size: 14px;}
+
+    footer #gr #p2 {width: 255px;
+    font-size: 14px;
+    text-indent: 20%;
+    margin-right: 2%;
+}
+
+#socials {position: relative;
+    margin-top: 5%;
+    gap: 15px;
+    }
+
+#socials a img {width: 50px;
+}
+
+footer h3 {font-size: 80%;}
+}
