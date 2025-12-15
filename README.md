@@ -8,11 +8,13 @@
 Скрины сайта: 
 
 Основной дизайн был создан в фигме:
-<img width="1027" height="513" alt="image" src="https://github.com/user-attachments/assets/37ffe991-d467-4bf1-8ed9-a248f9cfde3d" />
+<img width="1028" height="565" alt="image" src="https://github.com/user-attachments/assets/ac6eb988-1e3f-454c-b99a-743d3f79e2e1" />
+
 
 
 Мерч для сайта был создан в фигме:
-<img width="1194" height="584" alt="image" src="https://github.com/user-attachments/assets/6525ab76-be43-46b6-a41e-dfeaf9b49f35" />
+<img width="839" height="406" alt="image" src="https://github.com/user-attachments/assets/c4f394b7-7a03-4094-8920-edab334803a3" />
+
 
 
 Итоговый сайт отличается от референса, тк большинство шрифтов не поддерживались либо десктопным, либо мобильным браузером.
