@@ -128,6 +128,36 @@
         <div id="predloz-box">
             <p id="predloz">Предложить пост вы можете в <span id="redp">описании тгк</span></p>
         </div>
+
+        {% for post in posts %}
+<div class="post-card">
+    <div class="post-header">
+        <span class="post-id">#{{ post.post_id }}</span>
+    </div>
+
+    <div class="post-text">
+        {{ post.post_text }}
+    </div>
+
+    {% if post.media %}
+    <div class="post-media-container">
+        {% for item in post.media %}
+            {% set img_url = get_url(item.file_id) %}
+            {% if img_url %}
+                {% if item.media_type == 'photo' %}
+                    <img src="{{ img_url }}" class="post-img" loading="lazy">
+                {% elif item.media_type == 'video' %}
+                    <video controls class="post-video">
+                        <source src="{{ img_url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    </div>
+{% endfor %}
     </div>
 
 
