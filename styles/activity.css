@@ -8,10 +8,11 @@
 
 /* ---шрифты */
 
-body {margin-top: 200px;
-    transition: margin-top 0.3s ease;
+body {
+    transition: padding-top 0.3s ease;
     background:#1E1E1E;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+}
 
 body.small-header {
     margin-top: 120px;
@@ -26,7 +27,8 @@ html, body {
 
 @media (max-width: 768px) {
     body {
-        margin-top: 100px !important;
+        margin-top: 120px !important;
+        transition: margin-top 0.3s ease;
     }
 
        body.small-header {
@@ -551,6 +553,67 @@ font-size: 130%;}
             width: 320px;}
         }
 
+        /* стиль постов из тгк */
+/* Контейнер для всей ленты */
+.activity-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Авто-колонки: 2 в ряд на десктопе, 1 на мобилках */
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto; /* Отступ сверху от хедера и центровка */
+}
+
+/* Сама карточка */
+.post-card {
+    background: #1c1c1e; /* Темно-серый, как в ТГ */
+    border-radius: 15px;
+    border: 1px solid #333;
+    overflow: hidden; /* Чтобы картинки не вылезали за скругленные углы */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px); /* Легкий эффект при наведении */
+}
+
+/* Текст поста */
+.post-text {
+    padding: 15px;
+    color: #efefef;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Чтобы сохранялись переносы строк из ТГ */
+}
+
+/* Подвал поста (реакции и время) */
+.post-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #2c2c2e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reactions-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reaction {
+    background: #2c2c2e;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.time {
+    color: #8e8e93;
+    font-size: 12px;
+}
 /* ----окно контента */
 
 /* подвал */

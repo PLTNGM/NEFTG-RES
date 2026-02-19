@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
-    <script src="script/index.js"></script>
+    <title>Активность</title>
+    <script src="{{ url_for('static', filename='script/index.js') }}"></script>    <link rel="Stylesheet" href="styles/index.css">
     <link rel="Stylesheet" href="styles/activity.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NEFTG - уже год с вами! Мы рады представить вам сайт, где вы найдете интересные активности и мерч, посвященный нашему городу.">
@@ -16,15 +16,15 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     
     <!-- Для современных браузеров -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/neftgfavic.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/styles/img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/styles/img/neftgfavic.png">
     
     <!-- Для Apple устройств -->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/neftgfavic.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/styles/img/neftgfavic.png">
     
     <!-- Для Android -->
-    <link rel="icon" type="image/png" sizes="192x192" href="img/neftgfavic.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/styles/img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/styles/img/neftgfavic.png">
 
 
     <!-- шрифты -->
@@ -36,7 +36,7 @@
     <!-- верхня панель хедер -->
     <header id="header">
         <div id="logo">
-            <a href="index.html">
+            <a href="/">
                 <h1>NEFTG</h1>
                 <p>Наш город.Наш юмор</p>
             </a>
@@ -48,13 +48,13 @@
             <div class="burger">
                 <!-- Меняем img на label -->
                 <label for="burger-toggle" class="burger-btn">
-                    <img src="img/nav button.png" alt="Меню">
+                    <img src="/styles/img/nav button.png" alt="Меню">
                 </label>
                 
                 <ul class="menu">
-                    <li><a href="activity.html">Активность</a></li>
+                    <li><a href="/activity">Активность</a></li>
                     <hr class="line">
-                    <li><a href="Merch.html">Мерч</a></li>
+                    <li><a href="/Merch">Мерч</a></li>
                     <hr class="line">
                     <li><a href="https://t.me/NEFTGG">Канал</a></li>
                 </ul>
@@ -62,15 +62,15 @@
 
         <!-- обычная нав для десктопа -->
         <div id="navig">
-            <a href="activity.html">Активность</a>
-            <a href="Merch.html">Meрч</a>
+            <a href="/activity">Активность</a>
+            <a href="/Merch">Meрч</a>
             <a href="https://t.me/NEFTGG">Канал</a>
         </div>
     </header>
 
     <!-- вставка с фото -->
      <div class="nft">
-        <img src="img/font.png">
+        <img src="/styles/img/font.png">
      </div>
 
 
@@ -80,7 +80,7 @@
             <input type="checkbox" id="info-toggle" class="info-checkbox">
                 
             <label for="info-toggle" class="info-btn">
-                <img src="img/info-button.png" alt="информация">
+                <img src="/styles/img/info-button.png" alt="информация">
             </label>
                 
             <ul class="info-dropdown">
@@ -98,19 +98,19 @@
         <!-- лидеры -->
          <div class="liders">
             <div id="second">
-                <img src="img/okno no content.png">
+                <img src="/styles/img/okno no content.png">
                 <p>-</p>
                 <h4>2</h4>
             </div>
 
             <div id="first">
-                <img src="img/okno no content.png">
+                <img src="/styles/img/okno no content.png">
                 <p>-</p>
                 <h4>1</h4>
             </div>
 
             <div id="third">
-                <img src="img/okno no content.png">
+                <img src="/styles/img/okno no content.png">
                 <p>-</p>
                 <h4>3</h4>
             </div>
@@ -120,45 +120,51 @@
 
          <!-- предложение -->
         <div id="Polygon">
-            <img src="img/Polygon 8.png">
-            <img src="img/Polygon 8.png">
-            <img src="img/Polygon 8.png">
+            <img src="/styles/img/Polygon 8.png">
+            <img src="/styles/img/Polygon 8.png">
+            <img src="/styles/img/Polygon 8.png">
         </div>
 
         <div id="predloz-box">
             <p id="predloz">Предложить пост вы можете в <span id="redp">описании тгк</span></p>
         </div>
 
-        {% for post in posts %}
-<div class="post-card">
-    <div class="post-header">
-        <span class="post-id">#{{ post.post_id }}</span>
-    </div>
-
-    <div class="post-text">
-        {{ post.post_text }}
-    </div>
-
-    {% if post.media %}
-    <div class="post-media-container">
-        {% for item in post.media %}
-            {% set img_url = get_url(item.file_id) %}
-            {% if img_url %}
-                {% if item.media_type == 'photo' %}
-                    <img src="{{ img_url }}" class="post-img" loading="lazy">
-                {% elif item.media_type == 'video' %}
-                    <video controls class="post-video">
-                        <source src="{{ img_url }}" type="video/mp4">
-                    </video>
+        <div class="activity-feed">
+            {% for post in posts %}
+            <div class="post-card">
+                {% if post.media %}
+                    <div class="post-media-box">
+                        {% if post.media|length > 1 %}
+                            <div class="album-grid">
+                                {% for img in post.media[:4] %}
+                                    <img src="{{ img.url }}" class="album-img">
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <img src="{{ post.media[0].url }}" class="single-img">
+                        {% endif %}
+                    </div>
                 {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
-    {% endif %}
 
-    </div>
-{% endfor %}
-    </div>
+                <div class="post-info">
+                    <p class="post-text">{{ post.post_text }}</p>
+                    
+                    <div class="post-footer">
+                        <div class="reactions">
+                            {% if post.reactions is not none %}
+                                <div class="reactions-bar">
+                                    {% for r in post.reactions %}
+                                        <span class="reaction">{{ r.emoji }} {{ r.counter }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <span class="time">{{ post.post_date.strftime('%H:%M') }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
 
     <footer>
@@ -168,9 +174,9 @@
             <p id="p2">Хотите такой же  сайт? Обсудим ваш проект: тг @PLTNGM</p>
         </div>
         <div id="socials">
-            <a href="https://www.tiktok.com/@neftg1?_r=1&_t=ZS-91rBKAutUdV"><img src='img/tiktok 1.png'></a>
-            <a href="https://t.me/NEFTGG"><img src='img/telegram (1) 1.png'></a>
-            <a href="paschalko.html"><img src='img/instagram 1.png'></a>
+            <a href="https://www.tiktok.com/@neftg1?_r=1&_t=ZS-91rBKAutUdV"><img src='/styles//styles/img/tiktok 1.png'></a>
+            <a href="https://t.me/NEFTGG"><img src='/styles/img/telegram (1) 1.png'></a>
+            <a href="/paschalko"><img src='/styles/img/instagram 1.png'></a>
         </div>
     </footer>
 </body>

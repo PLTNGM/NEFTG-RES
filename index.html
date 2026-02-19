@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <script src="script/index.js"></script>
-    <link rel="Stylesheet" href="styles/index.css">
+    <script src="{{ url_for('static', filename='script/index.js') }}"></script>    <link rel="Stylesheet" href="styles/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NEFTG - уже год с вами! Мы рады представить вам сайт, где вы найдете интересные активности и мерч, посвященный нашему городу.">
 
@@ -14,15 +13,15 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     
     <!-- Для современных браузеров -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/neftgfavic.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/styles/img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/styles/img/neftgfavic.png">
     
     <!-- Для Apple устройств -->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/neftgfavic.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/styles/img/neftgfavic.png">
     
     <!-- Для Android -->
-    <link rel="icon" type="image/png" sizes="192x192" href="img/neftgfavic.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/styles/img/neftgfavic.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/styles/img/neftgfavic.png">
 
 
 <!-- шрифты -->
@@ -34,7 +33,7 @@
     <!-- верхня панель хедер -->
     <header id="header">
         <div id="logo">
-            <a href="index.html">
+            <a href="/">
                 <h1>NEFTG</h1>
                 <p>Наш город.Наш юмор</p>
             </a>
@@ -46,13 +45,13 @@
             <div class="burger">
                 <!-- Меняем img на label -->
                 <label for="burger-toggle" class="burger-btn">
-                    <img src="img/nav button.png" alt="Меню">
+                    <img src="/styles/img/nav button.png" alt="Меню">
                 </label>
                 
                 <ul class="menu">
-                    <li><a href="activity.html">Активность</a></li>
+                    <li><a href="/activity">Активность</a></li>
                     <hr class="line">
-                    <li><a href="Merch.html">Мерч</a></li>
+                    <li><a href="/Merch">Мерч</a></li>
                     <hr class="line">
                     <li><a href="https://t.me/NEFTGG">Канал</a></li>
                 </ul>
@@ -60,15 +59,15 @@
 
         <!-- обычная нав для десктопа -->
         <div id="navig">
-            <a href="activity.html">Активность</a>
-            <a href="Merch.html">Meрч</a>
+            <a href="/activity">Активность</a>
+            <a href="/Merch">Meрч</a>
             <a href="https://t.me/NEFTGG">Канал</a>
         </div>
     </header>
 
     <!-- вставка с фото -->
      <div class="nft">
-        <img src="img/font.png">
+        <img src="/styles/img/font.png">
      </div>
 
 
@@ -89,9 +88,9 @@
         
         <!-- фото -->
         <div id="photoglav">
-            <img src="img/photo_5354925500956536987_x 1.png">
-            <img src="img/photo_5199583689275732331_x 1.png">
-            <img src="img/photo_5458705465744683639_y 1.png">
+            <img src="/styles/img/photo_5354925500956536987_x 1.png">
+            <img src="/styles/img/photo_5199583689275732331_x 1.png">
+            <img src="/styles/img/photo_5458705465744683639_y 1.png">
         </div>
 
         <!-- подпись -->
@@ -117,9 +116,9 @@
             <p id="p2">Хотите такой же  сайт? Обсудим ваш проект: тг @PLTNGM</p>
         </div>
         <div id="socials">
-            <a href="https://www.tiktok.com/@neftg1?_r=1&_t=ZS-91rBKAutUdV"><img src='img/tiktok 1.png'></a>
-            <a href="https://t.me/NEFTGG"><img src='img/telegram (1) 1.png'></a>
-            <a href="paschalko.html"><img src='img/instagram 1.png'></a>
+            <a href="https://www.tiktok.com/@neftg1?_r=1&_t=ZS-91rBKAutUdV"><img src='/styles/img/tiktok 1.png'></a>
+            <a href="https://t.me/NEFTGG"><img src='/styles/img/telegram (1) 1.png'></a>
+            <a href="/paschalko"><img src='/styles/img/instagram 1.png'></a>
         </div>
     </footer>
 </body>
