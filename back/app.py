@@ -7,6 +7,13 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import requests
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+db_pass = os.getenv("DB_PASSWORD")
+bot_token = os.getenv("BOT_TOKEN")
+
 # Узнаем путь к папке, где лежит сам app.py (это папка back)
 base_dir = os.path.dirname(os.path.abspath(__file__))
 # Указываем, что шаблоны и статика на один уровень выше
@@ -18,9 +25,9 @@ app = Flask(__name__,
             static_url_path='/styles')
 
 DB_CONFIG = {
-    "database": "NEFTG",
-    "user": "postgres",
-    "password": "q20081004",
+    "database": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": db_pass,
     "host": "localhost",
     "port": "5432",
 }
@@ -28,7 +35,7 @@ DB_CONFIG = {
 def connection():
     return psycopg2.connect(**DB_CONFIG)
 
-BOT_TOKEN = '8574045363:AAEbZR8euBvfwthO8HfEt45Aq2cilhLk3xw'
+BOT_TOKEN = bot_token
 
 @lru_cache(maxsize=128)
 def get_tg_file_url(file_id):

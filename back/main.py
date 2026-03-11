@@ -1,18 +1,26 @@
+import os
 import telebot
 import psycopg2
 from psycopg2 import sql
 
+from dotenv import load_dotenv
+
 ADMIN_ID = [1306570088, 1341021324]
 
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+load_dotenv(dotenv_path)
+db_pass = os.getenv("DB_PASSWORD")
+bot_token = os.getenv("BOT_TOKEN")
+
 DB_CONFIG = {
-    "database": "NEFTG",
-    "user": "postgres",
-    "password": "q20081004",
+    "database": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": db_pass,
     "host": "localhost",
     "port": "5432",
 }
 
-bot = telebot.TeleBot('8574045363:AAEbZR8euBvfwthO8HfEt45Aq2cilhLk3xw')
+bot = telebot.TeleBot(bot_token)
 
 def connection ():
     return psycopg2.connect(**DB_CONFIG)
@@ -234,13 +242,13 @@ def clear_database(message):
             conn.close()
 
 
-    if __name__ == "__main__":
-        try:
-            init_db()
+if __name__ == "__main__":
+    try:
+        init_db()
 
-            print("🚀 Бот вышел на связь...")
-            bot.infinity_polling(allowed_updates=['message', 'channel_post', 'message_reaction_count'])
+        print("🚀 Бот вышел на связь...")
+        bot.infinity_polling(allowed_updates=['message', 'channel_post', 'message_reaction_count'])
 
 
-        except Exception as e:
-            print(f"❌ Критическая ошибка при запуске: {e}")
+    except Exception as e:
+        print(f"❌ Критическая ошибка при запуске: {e}")
